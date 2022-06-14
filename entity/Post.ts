@@ -14,7 +14,8 @@ export class Post {
 
     @Column({ nullable: false })
     likesCount: number
-
+    // getRawMany not apply the transformer, so can use the view to solve the problem
+    // the default type of the column is Date
     @Column({type: 'timestamp',nullable: false, default: () => "CURRENT_TIMESTAMP", transformer:{
       to(value){
         return value
