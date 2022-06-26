@@ -38,7 +38,7 @@ export class Push {
   .createQueryBuilder()
   .select("tool.id", "tool_id")
   .addSelect("tool.idx_organization_id", "idx_organization_id")
-  .addSelect("push.name", "pusn_name")
+  .addSelect("push.name", "push_name")
   .addSelect("push.createTime", "push_createTime")
   .from(Tool, "tool")
   .leftJoin(Push, "push", "tool.id = push.idx_tool_id"),
