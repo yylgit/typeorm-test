@@ -7,7 +7,7 @@ import {
 } from "typeorm"
 import { Profile } from "./Profile"
 
-@Entity()
+@Entity('nf_user')
 export class User {
   @PrimaryGeneratedColumn()
   id: number
@@ -15,7 +15,7 @@ export class User {
   @Column()
   name: string
 
-  @OneToOne(() => Profile,(profile)=>profile.user)
+  @OneToOne(() => Profile,(profile)=>profile.user, {createForeignKeyConstraints: false})
   @JoinColumn()
   profile: Profile
 }

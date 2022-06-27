@@ -5,9 +5,6 @@ import { DataSource, DataSourceOptions } from "../../src/index"
 import { User } from "./entity/User"
 import { Profile } from "./entity/Profile"
 
-import { Photo } from "./entity/Photo"
-import { PhotoUser } from "./entity/PhotoUser"
-
 
 const options: DataSourceOptions = {
     type: "mysql",
@@ -20,9 +17,7 @@ const options: DataSourceOptions = {
     synchronize: true,
     entities: [
         User,
-        Profile,
-        Photo,
-        PhotoUser,
+        Profile
     ],
 }
 
@@ -30,14 +25,14 @@ const dataSource = new DataSource(options)
 dataSource.initialize().then(
     async (dataSource) => {
 
-        // const user = new User()
-        // user.name = "Joe Smith"
+        const user = new User()
+        user.name = "Joe Smith"
 
-        // const profile = new Profile()
-        // profile.gender = "male"
-        // profile.photo = "me.jpg"
-        // profile.user = user
-        // await dataSource.manager.save(profile)
+        const profile = new Profile()
+        profile.gender = "male"
+        profile.photo = "me.jpg"
+        profile.user = user
+        await dataSource.manager.save(profile)
 
 
         // const profile = new Profile()

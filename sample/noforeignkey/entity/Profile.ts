@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToOne } from "typeorm"
 import {User} from './User'
 
-@Entity()
+@Entity('nf_photo_profile')
 export class Profile {
     @PrimaryGeneratedColumn()
     id: number
