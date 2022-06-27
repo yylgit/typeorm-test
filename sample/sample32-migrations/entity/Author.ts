@@ -1,6 +1,6 @@
 import { Column, Entity, PrimaryGeneratedColumn } from "../../../src/index"
 
-@Entity()
+@Entity('migration_author')
 export class Author {
     @PrimaryGeneratedColumn()
     id: number

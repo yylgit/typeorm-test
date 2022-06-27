@@ -6,7 +6,7 @@ import {
 } from "../../../src/index"
 import { Author } from "./Author"
 
-@Entity()
+@Entity('migration_post')
 export class Post {
     @PrimaryGeneratedColumn()
     id: number
