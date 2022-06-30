@@ -49,21 +49,21 @@ dataSource.initialize().then(
         // photo2.photoUser = user
         // await dataSource.manager.save(photo2)
 
-        dataSource.manager.find(Photo, {
-            // relations: {
-            //     photoUser: true,
-            // }
-        }).then(users => {
-            console.log(users)
-        })
-
-        // dataSource.manager.find(PhotoUser, {
+        // dataSource.manager.find(Photo, {
         //     relations: {
-        //         photos: true,
+        //         photoUser: true,
         //     }
         // }).then(users => {
         //     console.log(users)
         // })
+
+        dataSource.manager.find(PhotoUser, {
+            relations: {
+                photos: true,
+            }
+        }).then(users => {
+            console.log(users)
+        })
 
         // 如何删除外键的主表 如果有关联关系直接删除会失败
         // await dataSource.manager.delete(PhotoUser, {id: 3})

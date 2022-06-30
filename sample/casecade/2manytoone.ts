@@ -70,9 +70,9 @@ dataSource.initialize().then(
         // await dataSource.manager.delete(PhotoUser, {id: 3})
 
         // 级联删除 失败  需要手动先删除外键表的记录 后再删除
-        let user = await dataSource.manager.findOne(PhotoUser, {where: {id: 3}, relations:{photos: true}})
-        console.log(user)
-        await dataSource.manager.delete(PhotoUser, user)
+        // let user = await dataSource.manager.findOne(PhotoUser, {where: {id: 3}, relations:{photos: true}})
+        // console.log(user)
+        // await dataSource.manager.delete(PhotoUser, user)
     },
     (error) => console.log("Cannot connect: ", error),
 )

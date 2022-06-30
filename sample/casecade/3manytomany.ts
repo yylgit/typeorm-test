@@ -21,21 +21,29 @@ const options: DataSourceOptions = {
 const dataSource = new DataSource(options)
 dataSource.initialize().then(
     async (dataSource) => {
-        const category1 = new Category()
-        category1.name = "ORMs"
+        // const category1 = new Category()
+        // category1.name = "ORMs"
 
-        const category2 = new Category()
-        category2.name = "Programming"
+        // const category2 = new Category()
+        // category2.name = "Programming"
 
-        const question = new Question()
-        question.title = "How to ask questions?"
-        question.text = "Where can I ask TypeORM-related questions?"
-        question.categories = [category1, category2]
-        dataSource.manager.save(question)
+        // const question = new Question()
+        // question.title = "How to ask questions?"
+        // question.text = "Where can I ask TypeORM-related questions?"
+        // question.categories = [category1, category2]
+        // dataSource.manager.save(question)
 
-        dataSource.manager.find(Question, {
+        // dataSource.manager.find(Question, {
+        //     relations: {
+        //         categories: true,
+        //     },
+        // }).then(questions => {
+        //     console.log(questions)
+        // })
+
+         dataSource.manager.find(Category, {
             relations: {
-                categories: true,
+                questions: true,
             },
         }).then(questions => {
             console.log(questions)

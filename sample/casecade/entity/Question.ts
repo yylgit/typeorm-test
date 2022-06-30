@@ -20,7 +20,7 @@ export class Question {
 
     @ManyToMany((type) => Category, (category) => category.questions, {
         cascade: true,
-    })
+    })code 
     @JoinTable()
     categories: Category[]
 }

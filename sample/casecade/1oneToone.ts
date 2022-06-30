@@ -60,9 +60,9 @@ dataSource.initialize().then(
         // })
 
         dataSource.manager.find(Profile, {
-            // relations: {
-            //     user: true,
-            // }
+            relations: {
+                user: true,
+            }
         }).then(users => {
             console.log(users)
         })

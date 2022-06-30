@@ -1,7 +1,6 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "../../../src/index"
+import { Column, Entity, PrimaryGeneratedColumn, ManyToMany, JoinTable } from "../../../src/index"
 import { Author } from "./Author"
-import { ManyToMany } from "../../../src/decorator/relations/ManyToMany"
-import { JoinTable } from "../../../src/decorator/relations/JoinTable"
+
 
 @Entity("sample23_category")
 export class Category {
