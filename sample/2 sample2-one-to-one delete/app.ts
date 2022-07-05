@@ -31,14 +31,48 @@ dataSource.initialize().then(
         // details.comment = "about post"
         // details.metadata = "post,details,one-to-one"
 
+        
+        // let category = new PostCategory()
+        // category.name = 'category1'
+
         // let post = new Post()
         // post.text = "hello how are you?"
         // post.title = "hello"
-        // post.details = details
+        // post.category = category
+        // post.createTime = new Date()
 
-        // let postRepository = dataSource.getRepository(Post)
+        let postRepository = dataSource.getRepository(Post)
+        // postRepository.save(post).then(post => {
+        //     console.log(post)
+        // })
 
-        // postRepository.find()
+        // postRepository.findOneBy({id: 1}).then(res=>{
+        //     console.log(res)
+        // })
+        // postRepository.findOneOrFail({where: {id: 5}})
+        // postRepository.findOne({
+        //     relationLoadStrategy: 'query',
+        //     loadRelationIds: true,
+        //     relations: {
+        //         // category: true,
+        //     }, 
+        //     where: { id: 1 }
+        // }).then(res => {
+        //     console.log(res)
+        // })
+
+        // postRepository.softDelete({id: 1}).then(res => {
+        //     console.log(res)
+        // })
+
+        postRepository.recover({id: 1}).then(res => {
+            console.log(res)
+        })
+
+
+        // postRepository.findAndCount({select: ['id','deleteDate']}).then(res=>{
+        //     console.log(res)
+        // })
 
         // postRepository
         //     .save(post)

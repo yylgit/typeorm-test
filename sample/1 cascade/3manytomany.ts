@@ -21,33 +21,35 @@ const options: DataSourceOptions = {
 const dataSource = new DataSource(options)
 dataSource.initialize().then(
     async (dataSource) => {
-        // const category1 = new Category()
-        // category1.name = "ORMs"
+        const category1 = new Category()
+        category1.name = "ORMs"
+        category1.id = 2
 
         // const category2 = new Category()
-        // category2.name = "Programming"
+        // category2.name = "Programming22"
+        // save 会自动的全量更新关联关系
+        const question = new Question()
+        question.id = 1
+        question.title = "How to ask questions?"
+        question.text = "Where can I ask TypeORM-related questions?"
+        question.categories = [category1]
+        dataSource.manager.save(question)
 
-        // const question = new Question()
-        // question.title = "How to ask questions?"
-        // question.text = "Where can I ask TypeORM-related questions?"
-        // question.categories = [category1, category2]
-        // dataSource.manager.save(question)
-
-        // dataSource.manager.find(Question, {
-        //     relations: {
-        //         categories: true,
-        //     },
-        // }).then(questions => {
-        //     console.log(questions)
-        // })
-
-         dataSource.manager.find(Category, {
+        dataSource.manager.find(Question, {
             relations: {
-                questions: true,
+                categories: true,
             },
         }).then(questions => {
             console.log(questions)
         })
+
+        // dataSource.manager.find(Category, {
+        //     relations: {
+        //         questions: true,
+        //     },
+        // }).then(questions => {
+        //     console.log(questions)
+        // })
         
 
     },

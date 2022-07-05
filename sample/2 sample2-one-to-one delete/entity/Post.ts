@@ -3,6 +3,8 @@ import {
     Entity,
     OneToOne,
     PrimaryGeneratedColumn,
+    DeleteDateColumn,
+    CreateDateColumn
 } from "typeorm";
 import { PostDetails } from "./PostDetails"
 import { PostCategory } from "./PostCategory"
@@ -23,10 +25,33 @@ export class Post {
     @Column()
     text: string
 
+
     // post has relation with category, however inverse relation is not set (category does not have relation with post set)
     @OneToOne((type) => PostCategory, {
         cascade: true,  
+        createForeignKeyConstraints: false
     })
-    @JoinColumn({ referencedColumnName: "name"})
+    // @JoinColumn({ referencedColumnName: "name"})
     category: PostCategory
+
+    @DeleteDateColumn({select: false})
+    deleteDate: Date
+
+    @Column({type: 'datetime',nullable: false, default: () => "CURRENT_TIMESTAMP", transformer:{
+        to(value){
+          return value as Date
+        }, 
+        from(value) {
+          if(value instanceof Date) {
+            return value.getTime()
+          }
+          return value
+        }
+      }})
+    createTime: Date
+
+    @CreateDateColumn()
+    createDate: Date
+
+
 }

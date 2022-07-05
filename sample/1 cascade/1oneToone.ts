@@ -33,11 +33,23 @@ dataSource.initialize().then(
         // const user = new User()
         // user.name = "Joe Smith"
 
-        // const profile = new Profile()
-        // profile.gender = "male"
-        // profile.photo = "me.jpg"
+        const profile = new Profile()
+        // profile.id=100
+        // 如果设置了主键 就先查询 再更新，如果不设置主键就直接插入
+        // 设置了不存在的主键 也会先查询 再插入
+
+        // 如果没有主键的情况呢， typeorm规定必须有主键
+        profile.gender = "male22"
+        profile.photo = "me.jpg"
         // profile.user = user
-        // await dataSource.manager.save(profile)
+        try{
+            await dataSource.manager.save(profile)
+        }
+        catch(e) {
+            debugger
+            console.log(e)
+        }
+       
 
 
         // const profile = new Profile()
@@ -59,13 +71,13 @@ dataSource.initialize().then(
         //     console.log(users)
         // })
 
-        dataSource.manager.find(Profile, {
-            relations: {
-                user: true,
-            }
-        }).then(users => {
-            console.log(users)
-        })
+        // dataSource.manager.find(Profile, {
+        //     relations: {
+        //         user: true,
+        //     }
+        // }).then(users => {
+        //     console.log(users)
+        // })
 
         // const users = await dataSource
         //     .getRepository(User)

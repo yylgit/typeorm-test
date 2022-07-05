@@ -15,7 +15,7 @@ export class User {
   @Column()
   name: string
 
-  @OneToOne(() => Profile)
+  @OneToOne(() => Profile, {createForeignKeyConstraints: false})
   @JoinColumn()
   profile: Profile
 }

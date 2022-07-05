@@ -9,6 +9,6 @@ export class Category {
     @Column()
     name: string
 
-    @ManyToMany((type) => Question, (question) => question.categories)
+    @ManyToMany((type) => Question, (question) => question.categories, {createForeignKeyConstraints: false})
     questions: Question[]
 }

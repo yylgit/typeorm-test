@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, } from "typeorm"
 import { PhotoUser } from "./PhotoUser"
 
 @Entity()

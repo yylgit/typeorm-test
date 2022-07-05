@@ -1,7 +1,8 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToOne } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, OneToOne, Unique } from "typeorm"
 import {User} from './User'
 
 @Entity()
+@Unique(['photo'])
 export class Profile {
     @PrimaryGeneratedColumn()
     id: number

@@ -20,7 +20,8 @@ export class Question {
 
     @ManyToMany((type) => Category, (category) => category.questions, {
         cascade: true,
-    })code 
+        createForeignKeyConstraints: false
+    }) 
     @JoinTable()
     categories: Category[]
 }
