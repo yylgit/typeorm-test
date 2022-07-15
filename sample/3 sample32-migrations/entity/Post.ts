@@ -11,7 +11,7 @@ export class Post {
     @PrimaryGeneratedColumn()
     id: number
 
-    @Column()
+    @Column({length: 120})
     title: string
 
     @ManyToOne((type) => Author, {

@@ -1,7 +1,6 @@
 import "reflect-metadata"
 import { DataSource, DataSourceOptions } from "../../src/index"
-import { Post } from "./entity/Post"
-import { Author } from "./entity/Author"
+import {createtable} from './custom-migrations/createtable'
 
 const options: DataSourceOptions = {
     type: "mysql",
@@ -9,18 +8,30 @@ const options: DataSourceOptions = {
     port: 3306,
     username: "root",
     password: "123456",
-    database: "test_relations",
+    database: "temp_db1",
     synchronize: false,
-    migrationsTableName: 'custom_migrations_table',
-    migrations: [__dirname + "/custom-migrations/*{.js,.ts}"],
     logging: ["query", "error"],
-    entities: [Post, Author],
 }
 
 const dataSource = new DataSource(options)
 dataSource
     .initialize()
     .then(async (dataSource) => {
+        // await dataSource.query('CREATE DATABASE `temp_db1`;')
+
+        const queryRunner = dataSource.createQueryRunner()
+
+        // you can use its methods only after you call connect
+        // which performs real database connection
+        await queryRunner.connect()
+
+        await new createtable().up(queryRunner)
+
+        // .. now you can work with query runner and call its methods
+
+        // very important - don't forget to release query runner once you finished working with it
+        await queryRunner.release()
+
         // await dataSource.undoLastMigration()
 
         // first insert all the data
