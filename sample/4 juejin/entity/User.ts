@@ -2,6 +2,7 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   Column,
+  UpdateDateColumn
 } from "typeorm"
 
 @Entity()
@@ -11,4 +12,7 @@ export class User {
 
   @Column({length: 20})
   name: string
+
+  @UpdateDateColumn()
+  updateTime: Date
 }

@@ -8,6 +8,6 @@ export class Author {
     @Column()
     firstName: string
 
-    @Column()
+    @Column({length: 10})
     lastName: string
 }

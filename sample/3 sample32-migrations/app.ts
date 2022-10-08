@@ -10,7 +10,7 @@ const options: DataSourceOptions = {
     username: "root",
     password: "123456",
     database: "test_relations",
-    synchronize: false,
+    synchronize: true,
     migrationsTableName: 'custom_migrations_table',
     migrations: [__dirname + "/custom-migrations/*{.js,.ts}"],
     logging: ["query", "error"],

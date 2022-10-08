@@ -2,10 +2,23 @@ import { Entity, PrimaryGeneratedColumn, Column, OneToOne, Unique } from "typeor
 import {User} from './User'
 
 @Entity()
-@Unique(['photo'])
+// @Unique(['photo'])
 export class Profile {
     @PrimaryGeneratedColumn()
     id: number
+
+    @Column({ type: "bigint"
+    // ,
+    //  transformer: {
+    //     to(value){
+    //         return +value
+    //     }, 
+    //     from(value) {
+    //         return +value
+    //     }
+    // } 
+})
+    haha: number
 
     @Column()
     gender: string
@@ -13,6 +26,11 @@ export class Profile {
     @Column()
     photo: string
 
-    @OneToOne(()=>User,(user)=>user.profile,{cascade:true, eager:true})
-    user: User
+    // @OneToOne(()=>User,(user)=>user.profile,{cascade:true, eager:true})
+    // user: User
+    @Column('timestamp', {
+        name: 'create_time',
+        default: () => 'CURRENT_TIMESTAMP'
+        })
+        createTime: Date
 }
